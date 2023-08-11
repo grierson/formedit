@@ -4,7 +4,8 @@
 (fn setup [{: cursor : content}]
   (vim.api.nvim_buf_set_option 0 :filetype :clojure)
   (vim.api.nvim_buf_set_lines 0 0 -1 true [content])
-  (vim.api.nvim_win_set_cursor 0 cursor))
+  (vim.api.nvim_win_set_cursor 0 cursor)
+  (: (vim.treesitter.get_parser 0) :parse))
 
 (fn expect [{: cursor : content}]
   (when content
@@ -13,4 +14,4 @@
   (when cursor
     (assert.are.same cursor (vim.api.nvim_win_get_cursor 0))))
 
-{: setup : expect}
+{: setup : expect : feedkeys}

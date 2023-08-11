@@ -7,7 +7,8 @@ local function setup(_1_)
   local content = _arg_2_["content"]
   vim.api.nvim_buf_set_option(0, "filetype", "clojure")
   vim.api.nvim_buf_set_lines(0, 0, -1, true, {content})
-  return vim.api.nvim_win_set_cursor(0, cursor)
+  vim.api.nvim_win_set_cursor(0, cursor)
+  return vim.treesitter.get_parser(0):parse()
 end
 local function expect(_3_)
   local _arg_4_ = _3_
@@ -23,4 +24,4 @@ local function expect(_3_)
     return nil
   end
 end
-return {setup = setup, expect = expect}
+return {setup = setup, expect = expect, feedkeys = feedkeys}
