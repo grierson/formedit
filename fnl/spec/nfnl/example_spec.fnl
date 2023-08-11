@@ -1,6 +1,6 @@
 (local {: describe : it} (require :plenary.busted))
 (local assert (require :luassert.assert))
-(local core (require :formedit.nfnl.core))
+(local core (require :nfnl.core))
 
 (describe :first (fn []
                    (it "gets the first value"
