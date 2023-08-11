@@ -1,1 +1,4 @@
 deps/
+.build/
+.clj-kondo/
+.lsp/
