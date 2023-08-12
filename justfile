@@ -50,4 +50,4 @@ focus feature: prepare
     -c "PlenaryBustedDirectory lua/spec/{{feature}} { minimal_init='lua/spec/init.lua', sequential=true }"
 
 watch feature:
-  fswatch -o lua/formedit/{{feature}}.lua lua/spec/{{feature}}_spec.lua | xargs -n1 -I{} just file {{feature}}
+  fswatch -o lua/formedit/*.lua lua/spec/{{feature}}_spec.lua | xargs -n1 -I{} just file {{feature}}

@@ -19,6 +19,11 @@ local function delete_inner_form(node)
   local start_col = _let_2_[2]
   local end_row = _let_2_[3]
   local end_col = _let_2_[4]
+  local text = vim.api.nvim_buf_get_text(0, start_row, start_col, end_row, end_col, {})
+  local _ = print("Inner form text")
+  local _0 = print(vim.inspect(text))
+  local _1 = print("range")
+  local _2 = print(vim.inspect({form:range()}))
   local offset
   if (("set_lit" == form:type()) or ("anon_fn_lit" == form:type())) then
     offset = 2
