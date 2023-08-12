@@ -33,6 +33,15 @@ test: prepare
     -u lua/spec/init.lua \
     -c "PlenaryBustedDirectory lua/spec { minimal_init='lua/spec/init.lua', sequential=true }"
 
+
+file feature: prepare
+  ./.build/nvim/bin/nvim --version
+  ./.build/nvim/bin/nvim \
+    --headless \
+    --noplugin \
+    -u lua/spec/init.lua \
+    -c "PlenaryBustedFile lua/spec/{{feature}}_spec.lua"
+
 focus feature: prepare
   ./.build/nvim/bin/nvim --version
   ./.build/nvim/bin/nvim \
@@ -42,5 +51,5 @@ focus feature: prepare
     -c "PlenaryBustedDirectory lua/spec/{{feature}} { minimal_init='lua/spec/init.lua', sequential=true }"
 
 watch feature:
-	fswatch -o lua/formedit/{{feature}}.lua lua/spec/{{feature}}/{{feature}}_spec.lua | xargs -n1 -I{} just focus {{feature}}
+  fswatch -o lua/formedit/{{feature}}.lua lua/spec/{{feature}}_spec.lua | xargs -n1 -I{} just file {{feature}}
 
