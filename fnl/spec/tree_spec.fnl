@@ -9,8 +9,7 @@
             (it "cursor start of form"
                 (fn []
                   (h.setup {:content " " :cursor [1 1]})
-                  (let [node (ts.get_node_at_cursor)
-                        actual (tree.get-form node)]
+                  (let [actual (tree.get-current-form)]
                     (assert.falsy actual))))))
 
 (describe :List
@@ -19,20 +18,17 @@
               (it "cursor start of form"
                   (fn []
                     (h.setup {:content "(a)" :cursor [1 1]})
-                    (let [node (ts.get_node_at_cursor)
-                          actual (tree.get-form node)]
+                    (let [actual (tree.get-current-form)]
                       (assert.equals form-type (actual:type)))))
               (it "cursor within form"
                   (fn []
                     (h.setup {:content "(a)" :cursor [1 2]})
-                    (let [node (ts.get_node_at_cursor)
-                          actual (tree.get-form node)]
+                    (let [actual (tree.get-current-form)]
                       (assert.equals form-type (actual:type)))))
               (it "cursor end of form"
                   (fn []
                     (h.setup {:content "(a)" :cursor [1 3]})
-                    (let [node (ts.get_node_at_cursor)
-                          actual (tree.get-form node)]
+                    (let [actual (tree.get-current-form)]
                       (assert.equals form-type (actual:type))))))))
 
 (describe :Vector
@@ -41,20 +37,17 @@
               (it "cursor start of form"
                   (fn []
                     (h.setup {:content "[a]" :cursor [1 1]})
-                    (let [node (ts.get_node_at_cursor)
-                          actual (tree.get-form node)]
+                    (let [actual (tree.get-current-form)]
                       (assert.equals form-type (actual:type)))))
               (it "cursor within form"
                   (fn []
                     (h.setup {:content "[a]" :cursor [1 2]})
-                    (let [node (ts.get_node_at_cursor)
-                          actual (tree.get-form node)]
+                    (let [actual (tree.get-current-form)]
                       (assert.equals form-type (actual:type)))))
               (it "cursor end of form"
                   (fn []
                     (h.setup {:content "[a]" :cursor [1 3]})
-                    (let [node (ts.get_node_at_cursor)
-                          actual (tree.get-form node)]
+                    (let [actual (tree.get-current-form)]
                       (assert.equals form-type (actual:type))))))))
 
 (describe :Map
@@ -63,20 +56,17 @@
               (it "cursor start of form"
                   (fn []
                     (h.setup {:content "{:a 1}" :cursor [1 1]})
-                    (let [node (ts.get_node_at_cursor)
-                          actual (tree.get-form node)]
+                    (let [actual (tree.get-current-form)]
                       (assert.equals form-type (actual:type)))))
               (it "cursor within form"
                   (fn []
                     (h.setup {:content "{:a 1}" :cursor [1 2]})
-                    (let [node (ts.get_node_at_cursor)
-                          actual (tree.get-form node)]
+                    (let [actual (tree.get-current-form)]
                       (assert.equals form-type (actual:type)))))
               (it "cursor end of form"
                   (fn []
                     (h.setup {:content "{:a 1}" :cursor [1 6]})
-                    (let [node (ts.get_node_at_cursor)
-                          actual (tree.get-form node)]
+                    (let [actual (tree.get-current-form)]
                       (assert.equals form-type (actual:type))))))))
 
 (describe :Set
@@ -85,26 +75,22 @@
               (it "cursor on #"
                   (fn []
                     (h.setup {:content "#{1}" :cursor [1 1]})
-                    (let [node (ts.get_node_at_cursor)
-                          actual (tree.get-form node)]
+                    (let [actual (tree.get-current-form)]
                       (assert.equals form-type (actual:type)))))
               (it "cursor start of form"
                   (fn []
                     (h.setup {:content "#{1}" :cursor [1 2]})
-                    (let [node (ts.get_node_at_cursor)
-                          actual (tree.get-form node)]
+                    (let [ actual (tree.get-current-form)]
                       (assert.equals form-type (actual:type)))))
               (it "cursor within form"
                   (fn []
                     (h.setup {:content "#{1}" :cursor [1 3]})
-                    (let [node (ts.get_node_at_cursor)
-                          actual (tree.get-form node)]
+                    (let [actual (tree.get-current-form)]
                       (assert.equals form-type (actual:type)))))
               (it "cursor end of form"
                   (fn []
                     (h.setup {:content "#{1}" :cursor [1 4]})
-                    (let [node (ts.get_node_at_cursor)
-                          actual (tree.get-form node)]
+                    (let [actual (tree.get-current-form)]
                       (assert.equals form-type (actual:type))))))))
 
 (describe "Anonymous function"
@@ -113,24 +99,20 @@
               (it "cursor on #"
                   (fn []
                     (h.setup {:content "#(1)" :cursor [1 1]})
-                    (let [node (ts.get_node_at_cursor)
-                          actual (tree.get-form node)]
+                    (let [actual (tree.get-current-form)]
                       (assert.equals form-type (actual:type)))))
               (it "cursor start of form"
                   (fn []
                     (h.setup {:content "#(1)" :cursor [1 2]})
-                    (let [node (ts.get_node_at_cursor)
-                          actual (tree.get-form node)]
+                    (let [actual (tree.get-current-form)]
                       (assert.equals form-type (actual:type)))))
               (it "cursor within form"
                   (fn []
                     (h.setup {:content "#(1)" :cursor [1 3]})
-                    (let [node (ts.get_node_at_cursor)
-                          actual (tree.get-form node)]
+                    (let [actual (tree.get-current-form)]
                       (assert.equals form-type (actual:type)))))
               (it "cursor end of form"
                   (fn []
                     (h.setup {:content "#(1)" :cursor [1 4]})
-                    (let [node (ts.get_node_at_cursor)
-                          actual (tree.get-form node)]
+                    (let [actual (tree.get-current-form)]
                       (assert.equals form-type (actual:type))))))))

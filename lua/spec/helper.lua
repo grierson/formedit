@@ -20,14 +20,8 @@ local function expect(_4_)
   local _arg_5_ = _4_
   local cursor = _arg_5_["cursor"]
   local content = _arg_5_["content"]
-  local lines = _arg_5_["lines"]
-  local lines0 = (lines or 0)
-  local _ = print(lines0)
-  local foo = vim.api.nvim_buf_get_lines(0, lines0, -1, false)
-  local _0 = print("found text in expect")
-  local _1 = print(vim.inspect(foo))
   if content then
-    assert.are.same(content, core.first(vim.api.nvim_buf_get_lines(0, lines0, -1, false)))
+    assert.are.same(content, core.first(vim.api.nvim_buf_get_lines(0, 0, 10, false)))
   else
   end
   if cursor then

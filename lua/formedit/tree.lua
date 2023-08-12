@@ -1,4 +1,5 @@
 -- [nfnl] Compiled from fnl/formedit/tree.fnl by https://github.com/Olical/nfnl, do not edit.
+local ts = require("nvim-treesitter.ts_utils")
 local forms = {list_lit = true, vec_lit = true, map_lit = true, set_lit = true, anon_fn_lit = true}
 local function get_form(node)
   if forms[node:type()] then
@@ -12,4 +13,9 @@ local function get_form(node)
     end
   end
 end
-return {["get-form"] = get_form}
+local function get_current_form()
+  local node = ts.get_node_at_cursor()
+  local form = get_form(node)
+  return form
+end
+return {["get-current-form"] = get_current_form}
