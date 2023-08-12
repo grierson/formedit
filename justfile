@@ -39,8 +39,8 @@ focus feature: prepare
     --headless \
     --noplugin \
     -u lua/spec/init.lua \
-    -c "PlenaryBustedDirectory lua/spec/nfnl/api/{{feature}} { minimal_init='lua/spec/init.lua', sequential=true }"
+    -c "PlenaryBustedDirectory lua/spec/{{feature}} { minimal_init='lua/spec/init.lua', sequential=true }"
 
 watch feature:
-	fswatch -o lua/formedit/api/{{feature}}.lua lua/spec/nfnl/api/{{feature}}/{{feature}}_spec.lua | xargs -n1 -I{} just focus {{feature}}
+	fswatch -o lua/formedit/{{feature}}.lua lua/spec/{{feature}}/{{feature}}_spec.lua | xargs -n1 -I{} just focus {{feature}}
 

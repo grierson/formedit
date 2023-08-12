@@ -14,4 +14,4 @@
   (when cursor
     (assert.are.same cursor (vim.api.nvim_win_get_cursor 0))))
 
-{: setup : expect : feedkeys}
+{: setup : expect}

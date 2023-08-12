@@ -1,4 +1,4 @@
--- [nfnl] Compiled from fnl/spec/nfnl/helper.fnl by https://github.com/Olical/nfnl, do not edit.
+-- [nfnl] Compiled from fnl/spec/helper.fnl by https://github.com/Olical/nfnl, do not edit.
 local assert = require("luassert.assert")
 local core = require("formedit.nfnl.core")
 local function setup(_1_)
@@ -24,4 +24,4 @@ local function expect(_3_)
     return nil
   end
 end
-return {setup = setup, expect = expect, feedkeys = feedkeys}
+return {setup = setup, expect = expect}

@@ -4,10 +4,10 @@
               :set_lit true
               :anon_fn_lit true})
 
-(fn form? [node]
+(fn get-form [node]
   (if (. forms (node:type))
       node
-      (let [child (node:named_child 0)]
-        (when child (form? child)))))
+      (let [parent (node:parent)]
+        (when parent (get-form parent)))))
 
-{: form?}
+{: get-form}
