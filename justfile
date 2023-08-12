@@ -33,7 +33,6 @@ test: prepare
     -u lua/spec/init.lua \
     -c "PlenaryBustedDirectory lua/spec { minimal_init='lua/spec/init.lua', sequential=true }"
 
-
 file feature: prepare
   ./.build/nvim/bin/nvim --version
   ./.build/nvim/bin/nvim \
@@ -52,4 +51,3 @@ focus feature: prepare
 
 watch feature:
   fswatch -o lua/formedit/{{feature}}.lua lua/spec/{{feature}}_spec.lua | xargs -n1 -I{} just file {{feature}}
-
