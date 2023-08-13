@@ -4,10 +4,10 @@ local describe = _local_1_["describe"]
 local it = _local_1_["it"]
 local before_each = _local_1_["before_each"]
 local h = require("spec.helper")
-local tree = require("formedit.tree")
+local select = require("formedit.select")
 local function _2_()
   local function _3_()
-    return vim.keymap.set("o", "if", tree["select-form"])
+    return vim.keymap.set("o", "if", select["select-form"])
   end
   before_each(_3_)
   local function _4_()

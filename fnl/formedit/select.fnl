@@ -1,5 +1,8 @@
 (local ts (require :nvim-treesitter.ts_utils))
 
+(local query
+       "[(list_lit) (quoting_lit) (vec_lit) (set_lit) (anon_fn_lit) (map_lit)] @form")
+
 (local forms {:list_lit true
               :vec_lit true
               :map_lit true
@@ -18,7 +21,8 @@
     form))
 
 (fn select-form []
-  (let [form (get-current-form)]
+  (let [form (get-current-form)
+        _ (print (form:type))]
     (ts.update_selection 0 form)))
 
 {: get-current-form : select-form}

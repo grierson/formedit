@@ -1,11 +1,11 @@
 (local {: describe : it : before_each} (require :plenary.busted))
 (local h (require :spec.helper))
-(local tree (require :formedit.tree))
+(local select (require :formedit.select))
 
 (describe "delete around"
           (fn []
             (before_each (fn []
-                           (vim.keymap.set :o :af tree.select-form)))
+                           (vim.keymap.set :o :af select.select-form)))
             (it :list
                 (fn []
                   (h.setup {:content "(1)" :cursor [1 1]})
