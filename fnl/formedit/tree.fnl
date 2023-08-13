@@ -17,4 +17,8 @@
         form (get-form node)]
     form))
 
-{: get-current-form}
+(fn select-form []
+  (let [form (get-current-form)]
+    (ts.update_selection 0 form)))
+
+{: get-current-form : select-form}

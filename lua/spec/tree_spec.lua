@@ -5,7 +5,6 @@ local it = _local_1_["it"]
 local h = require("spec.helper")
 local tree = require("formedit.tree")
 local assert = require("luassert.assert")
-local ts = require("nvim-treesitter.ts_utils")
 local function _2_()
   local function _3_()
     h.setup({content = " ", cursor = {1, 1}})

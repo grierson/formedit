@@ -18,4 +18,8 @@ local function get_current_form()
   local form = get_form(node)
   return form
 end
-return {["get-current-form"] = get_current_form}
+local function select_form()
+  local form = get_current_form()
+  return ts.update_selection(0, form)
+end
+return {["get-current-form"] = get_current_form, ["select-form"] = select_form}

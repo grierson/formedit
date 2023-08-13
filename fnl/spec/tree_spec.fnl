@@ -2,7 +2,6 @@
 (local h (require :spec.helper))
 (local tree (require :formedit.tree))
 (local assert (require :luassert.assert))
-(local ts (require :nvim-treesitter.ts_utils))
 
 (describe "No form return nil"
           (fn []
@@ -80,7 +79,7 @@
               (it "cursor start of form"
                   (fn []
                     (h.setup {:content "#{1}" :cursor [1 2]})
-                    (let [ actual (tree.get-current-form)]
+                    (let [actual (tree.get-current-form)]
                       (assert.equals form-type (actual:type)))))
               (it "cursor within form"
                   (fn []

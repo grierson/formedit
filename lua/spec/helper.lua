@@ -16,6 +16,12 @@ local function setup(_1_)
   vim.api.nvim_win_set_cursor(0, cursor)
   return vim.treesitter.get_parser(0):parse()
 end
+local function escape_keys(keys)
+  return vim.api.nvim_replace_termcodes(keys, true, false, true)
+end
+local function feedkeys(keys)
+  return vim.api.nvim_feedkeys(escape_keys(keys), "xmt", true)
+end
 local function expect(_4_)
   local _arg_5_ = _4_
   local cursor = _arg_5_["cursor"]
@@ -30,4 +36,4 @@ local function expect(_4_)
     return nil
   end
 end
-return {setup = setup, expect = expect}
+return {setup = setup, expect = expect, feedkeys = feedkeys}
