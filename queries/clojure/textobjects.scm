@@ -5,5 +5,5 @@
  (anon_fn_lit)
  (map_lit)] @form.outer)
 
-
-(list_lit (_)  @form.inner)
+((list_lit . value: (_) @_start . (_)+ @_end)
+ (#make-range! "form.inner" @_start @_end))
