@@ -45,6 +45,31 @@ local function _2_()
     h.feedkeys("daf")
     return h.expect({content = "", cursor = {1, 0}, lines = 1})
   end
-  return it("delete across lines", _9_)
+  it("delete across lines", _9_)
+  local function _10_()
+    h.setup({content = "([1] [2])", cursor = {1, 5}})
+    h.feedkeys("daf")
+    return h.expect({content = "([1] )", cursor = {1, 5}})
+  end
+  return it("only deletes sub form", _10_)
 end
-return describe("delete around", _2_)
+describe("delete around", _2_)
+local function _11_()
+  local function _12_()
+    return vim.keymap.set("o", "aF", select["select-root-form"])
+  end
+  before_each(_12_)
+  local function _13_()
+    h.setup({content = "(+ 1 (+ 2 3))", cursor = {1, 0}})
+    h.feedkeys("daF")
+    return h.expect({content = "", cursor = {1, 0}})
+  end
+  it("cursor at head of form deletes root", _13_)
+  local function _14_()
+    h.setup({content = "(+ 1 (+ 2 3))", cursor = {1, 7}})
+    h.feedkeys("daF")
+    return h.expect({content = "", cursor = {1, 0}})
+  end
+  return it("cursor in sub form deletes root", _14_)
+end
+return describe("delete around root", _11_)
