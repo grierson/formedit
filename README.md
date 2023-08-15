@@ -8,6 +8,10 @@ Paredit in fennel
 ./scripts/nfnl   # To download nfnl
 ```
 
+[ ] - inner select
+[ ] - root select
+[ ] - slurp/barf
+
 ## Unlicensed
 
 Find the full [Unlicense][unlicense] in the `UNLICENSE` file, but here's a

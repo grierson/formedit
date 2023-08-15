@@ -1,4 +1,3 @@
-
 (local find (require :formedit.find))
 (local insertion (require :formedit.insertion))
 (local select (require :formedit.select))

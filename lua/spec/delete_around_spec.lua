@@ -53,7 +53,7 @@ local function _2_()
   end
   return it("only deletes sub form", _10_)
 end
-describe("delete around", _2_)
+describe("delete around form", _2_)
 local function _11_()
   local function _12_()
     return vim.keymap.set("o", "aF", select.root)
@@ -70,6 +70,12 @@ local function _11_()
     h.feedkeys("daF")
     return h.expect({content = "", cursor = {1, 0}})
   end
-  return it("cursor in sub form deletes root", _14_)
+  it("cursor in sub form deletes root", _14_)
+  local function _15_()
+    h.setup({content = "(+ 1 (+ 2 3))", cursor = {1, 7}})
+    h.feedkeys("daF")
+    return h.expect({content = "", cursor = {1, 0}})
+  end
+  return it("cursor in sub form deletes root", _15_)
 end
 return describe("delete around root", _11_)

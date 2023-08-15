@@ -2,7 +2,7 @@
 (local h (require :spec.helper))
 (local select (require :formedit.select))
 
-(describe "delete around"
+(describe "delete around form"
           (fn []
             (before_each (fn []
                            (vim.keymap.set :o :af select.form)))
@@ -49,6 +49,11 @@
             (it "cursor at head of form deletes root"
                 (fn []
                   (h.setup {:content "(+ 1 (+ 2 3))" :cursor [1 0]})
+                  (h.feedkeys :daF)
+                  (h.expect {:content "" :cursor [1 0]})))
+            (it "cursor in sub form deletes root"
+                (fn []
+                  (h.setup {:content "(+ 1 (+ 2 3))" :cursor [1 7]})
                   (h.feedkeys :daF)
                   (h.expect {:content "" :cursor [1 0]})))
             (it "cursor in sub form deletes root"
