@@ -5,7 +5,7 @@
 (describe "delete around"
           (fn []
             (before_each (fn []
-                           (vim.keymap.set :o :af select.select-form)))
+                           (vim.keymap.set :o :af select.form)))
             (it :list
                 (fn []
                   (h.setup {:content "(1)" :cursor [1 1]})
@@ -45,7 +45,7 @@
 (describe "delete around root"
           (fn []
             (before_each (fn []
-                           (vim.keymap.set :o :aF select.select-root-form)))
+                           (vim.keymap.set :o :aF select.root)))
             (it "cursor at head of form deletes root"
                 (fn []
                   (h.setup {:content "(+ 1 (+ 2 3))" :cursor [1 0]})

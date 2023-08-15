@@ -7,7 +7,7 @@ local h = require("spec.helper")
 local select = require("formedit.select")
 local function _2_()
   local function _3_()
-    return vim.keymap.set("o", "af", select["select-form"])
+    return vim.keymap.set("o", "af", select.form)
   end
   before_each(_3_)
   local function _4_()
@@ -56,7 +56,7 @@ end
 describe("delete around", _2_)
 local function _11_()
   local function _12_()
-    return vim.keymap.set("o", "aF", select["select-root-form"])
+    return vim.keymap.set("o", "aF", select.root)
   end
   before_each(_12_)
   local function _13_()
