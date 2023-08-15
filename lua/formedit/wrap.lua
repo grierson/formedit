@@ -10,7 +10,7 @@ local function head()
   local end_col = _let_1_[4]
   vim.api.nvim_buf_set_text(0, end_row, end_col, end_row, end_col, {")"})
   vim.api.nvim_buf_set_text(0, start_row, start_col, start_row, start_col, {"( "})
-  vim.api.nvim_win_set_cursor(0, {(start_row + 1), (start_col + insert_offset)})
+  vim.api.nvim_win_set_cursor(0, {(start_row + 1), (start_col + insert_offset + 1)})
   return vim.api.nvim_feedkeys("i", "n", true)
 end
 return {head = head}
