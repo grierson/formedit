@@ -8,6 +8,7 @@ local function head()
   local start_col = _let_1_[2]
   local start_col0 = (start_col + insert_offset)
   vim.api.nvim_buf_set_text(0, start_row, start_col0, start_row, start_col0, {" "})
+  vim.api.nvim_win_set_cursor(0, {(start_row + 1), (start_col0 + 1)})
   return vim.api.nvim_feedkeys("i", "n", true)
 end
 local function tail()

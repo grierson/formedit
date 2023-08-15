@@ -16,19 +16,19 @@ local function _2_()
   local function _4_()
     h.setup({content = "(1)", cursor = {1, 0}})
     h.feedkeys(head_keymap)
-    return h.expect({content = "( 1)", cursor = {1, 0}})
+    return h.expect({content = "( 1)", cursor = {1, 1}})
   end
   it("form", _4_)
   local function _5_()
     h.setup({content = "#{1}", cursor = {1, 0}})
     h.feedkeys(head_keymap)
-    return h.expect({content = "#{ 1}", cursor = {1, 0}})
+    return h.expect({content = "#{ 1}", cursor = {1, 2}})
   end
   it("set", _5_)
   local function _6_()
     h.setup({content = "(1 (2))", cursor = {1, 3}})
     h.feedkeys(head_keymap)
-    return h.expect({content = "(1 ( 2))", cursor = {1, 2}})
+    return h.expect({content = "(1 ( 2))", cursor = {1, 4}})
   end
   return it("sub form", _6_)
 end

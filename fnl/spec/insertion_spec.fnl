@@ -14,17 +14,17 @@
                 (fn []
                   (h.setup {:content "(1)" :cursor [1 0]})
                   (h.feedkeys head-keymap)
-                  (h.expect {:content "( 1)" :cursor [1 0]})))
+                  (h.expect {:content "( 1)" :cursor [1 1]})))
             (it :set
                 (fn []
                   (h.setup {:content "#{1}" :cursor [1 0]})
                   (h.feedkeys head-keymap)
-                  (h.expect {:content "#{ 1}" :cursor [1 0]})))
+                  (h.expect {:content "#{ 1}" :cursor [1 2]})))
             (it "sub form"
                 (fn []
                   (h.setup {:content "(1 (2))" :cursor [1 3]})
                   (h.feedkeys head-keymap)
-                  (h.expect {:content "(1 ( 2))" :cursor [1 2]})))))
+                  (h.expect {:content "(1 ( 2))" :cursor [1 4]})))))
 
 (describe "tail insertion"
           (fn []
