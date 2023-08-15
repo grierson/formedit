@@ -8,7 +8,7 @@ local compile = autoload("formedit.nfnl.compile")
 local config = autoload("formedit.nfnl.config")
 local function fennel_buf_write_post_callback_fn(root_dir, cfg)
   local function _2_(ev)
-    return compile["into-file"]({["root-dir"] = root_dir, cfg = cfg, path = ev.file, source = nvim["get-buf-content-as-string"](ev.buf)})
+    return compile["into-file"]({["root-dir"] = root_dir, cfg = cfg, path = fs["full-path"](ev.file), source = nvim["get-buf-content-as-string"](ev.buf)})
   end
   return _2_
 end
