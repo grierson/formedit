@@ -3,4 +3,5 @@ local find = require("formedit.find")
 local insertion = require("formedit.insertion")
 local select = require("formedit.select")
 local wrap = require("formedit.wrap")
-return {find = find, insertion = insertion, select = select, wrap = wrap}
+local raise = require("formedit.raise")
+return {find = find, insertion = insertion, select = select, wrap = wrap, raise = raise}
