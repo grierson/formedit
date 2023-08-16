@@ -27,7 +27,15 @@ local function expect(_4_)
   local cursor = _arg_5_["cursor"]
   local content = _arg_5_["content"]
   if content then
-    assert.are.same(content, core.first(vim.api.nvim_buf_get_lines(0, 0, 10, false)))
+    local function _6_()
+      local text = vim.api.nvim_buf_get_lines(0, 0, 10, false)
+      if (core.count(text) == 1) then
+        return core.first(text)
+      else
+        return text
+      end
+    end
+    assert.are.same(content, _6_())
   else
   end
   if cursor then

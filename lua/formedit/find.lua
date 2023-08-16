@@ -16,10 +16,18 @@ local function find_current_form(node)
   end
 end
 local function find_root_form(node)
-  if node:parent() then
-    return find_root_form(node:parent())
-  else
+  local _let_3_ = {node:start()}
+  local _ = _let_3_[1]
+  local col = _let_3_[2]
+  local type = node:type()
+  if (forms[type] and (col == 0)) then
     return node
+  else
+    if node:parent() then
+      return find_root_form(node:parent())
+    else
+      return nil
+    end
   end
 end
 local function form()

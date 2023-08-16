@@ -72,10 +72,16 @@ local function _11_()
   end
   it("cursor in sub form deletes root", _14_)
   local function _15_()
-    h.setup({content = "(+ 1 (+ 2 3))", cursor = {1, 7}})
+    h.setup({content = {"(+ 1 2)", "(+ 3 4)"}, cursor = {1, 0}})
     h.feedkeys("daF")
-    return h.expect({content = "", cursor = {1, 0}})
+    return h.expect({content = {"", "(+ 3 4)"}, cursor = {1, 0}})
   end
-  return it("cursor in sub form deletes root", _15_)
+  it("only deletes root form that cursor is in", _15_)
+  local function _16_()
+    h.setup({content = {"(+ 1 2)", "(+ 3 4)"}, cursor = {2, 0}})
+    h.feedkeys("daF")
+    return h.expect({content = {"(+ 1 2)", ""}, cursor = {2, 0}})
+  end
+  return it("only deletes root form that cursor is in second form", _16_)
 end
 return describe("delete around root", _11_)

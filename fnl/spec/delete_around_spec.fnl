@@ -56,8 +56,13 @@
                   (h.setup {:content "(+ 1 (+ 2 3))" :cursor [1 7]})
                   (h.feedkeys :daF)
                   (h.expect {:content "" :cursor [1 0]})))
-            (it "cursor in sub form deletes root"
+            (it "only deletes root form that cursor is in"
                 (fn []
-                  (h.setup {:content "(+ 1 (+ 2 3))" :cursor [1 7]})
+                  (h.setup {:content ["(+ 1 2)" "(+ 3 4)"] :cursor [1 0]})
                   (h.feedkeys :daF)
-                  (h.expect {:content "" :cursor [1 0]})))))
+                  (h.expect {:content ["" "(+ 3 4)"] :cursor [1 0]})))
+            (it "only deletes root form that cursor is in second form"
+                (fn []
+                  (h.setup {:content ["(+ 1 2)" "(+ 3 4)"] :cursor [2 0]})
+                  (h.feedkeys :daF)
+                  (h.expect {:content ["(+ 1 2)" ""] :cursor [2 0]})))))

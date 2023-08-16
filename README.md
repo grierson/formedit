@@ -8,9 +8,9 @@ Paredit in fennel
 ./scripts/nfnl   # To download nfnl
 ```
 
-[ ] - inner select
-[ ] - root select
-[ ] - slurp/barf
+[ ] - inner select - Get all named value children on form
+[ ] - root select - Is form and on column 0
+[ ] - slurp/barf - ?
 
 ## Unlicensed
 

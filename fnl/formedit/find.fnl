@@ -26,9 +26,12 @@
         (when parent (find-current-form parent)))))
 
 (fn find-root-form [node]
-  (if (node:parent)
-      (find-root-form (node:parent))
-      node))
+  (let [[_ col] [(node:start)]
+        type (node:type)]
+    (if (and (. forms type) (= col 0))
+        node
+        (when (node:parent)
+          (find-root-form (node:parent))))))
 
 ;; Find node
 (fn form []

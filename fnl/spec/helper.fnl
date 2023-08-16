@@ -15,8 +15,11 @@
 
 (fn expect [{: cursor : content}]
   (when content
-    (assert.are.same content
-                     (core.first (vim.api.nvim_buf_get_lines 0 0 10 false))))
+    (assert.are.same content (let [text (vim.api.nvim_buf_get_lines 0 0 10
+                                                                    false)]
+                               (if (= (core.count text) 1)
+                                   (core.first text)
+                                   text))))
   (when cursor
     (assert.are.same cursor (vim.api.nvim_win_get_cursor 0))))
 
