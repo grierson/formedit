@@ -19,4 +19,3 @@
                   (h.setup {:content "(1 (2))" :cursor [1 3]})
                   (h.feedkeys keymap)
                   (h.expect {:content "(1 ( (2)))" :cursor [1 4]})))))
-

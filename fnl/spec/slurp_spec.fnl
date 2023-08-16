@@ -25,7 +25,6 @@
                   (h.feedkeys forward-keymap)
                   (h.expect {:content "(#{1 2})" :cursor [1 1]})))))
 
-
 (describe "slurp backwards"
           (fn []
             (before_each (fn []
