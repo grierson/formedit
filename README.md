@@ -9,7 +9,6 @@ Paredit in fennel
 ```
 
 [ ] - inner select - Get all named value children on form
-[ ] - root select - Is form and on column 0
 [ ] - slurp/barf - ?
 
 ## Unlicensed
