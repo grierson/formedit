@@ -16,8 +16,10 @@
 (fn backward []
   (let [form (find.form)
         [row col] [(form:start)]
+        type (form:type)
+        offset (. find.insert-offset type)
+        col (+ col offset)
         sibling (form:prev_sibling)
-        col (+ col 1)
         sibling-text (ts.get_node_text sibling 0)
         sibling-text (.. sibling-text " ")
         [sibling-row-start sibling-col-start sibling-row-end sibling-col-end] [(sibling:range)]]

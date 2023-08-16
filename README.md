@@ -1,15 +1,34 @@
 # Form edit
 
-Paredit in fennel
+Paredit in Fennel for Clojure
 
-## Getting started
+## Features
+
+- Form text objects
+  - Lists (s-exp, quoted list), vector, set are all under one text object
+  - so instead of `di(` `di[` `di{` just `dif` (or any other text object command)
+  - `f` for current form. `F` for root form
+- Slurp
+  - Bring in element/form into your form
+- Raise
+  - Remove parent form and replace with current form
+- Wrap
+  - Add form around current form
+- Insertion
+  - Move cursor to begining/end for form in insert mode
+
+## Todo
+
+- [ ] - Inner select
+- [ ] - Barf
+
+## Dev Getting started
 
 ```bash
 ./scripts/nfnl   # To download nfnl
+just test   # Run tests
+just watch {featuer}   # Run watch tests for feature
 ```
-
-[ ] - inner select - Get all named value children on form
-[ ] - slurp/barf - ?
 
 ## Unlicensed
 

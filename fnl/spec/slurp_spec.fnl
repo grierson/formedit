@@ -18,7 +18,12 @@
                 (fn []
                   (h.setup {:content "((1) (+ 2 3))" :cursor [1 1]})
                   (h.feedkeys forward-keymap)
-                  (h.expect {:content "((1 (+ 2 3)))" :cursor [1 1]})))))
+                  (h.expect {:content "((1 (+ 2 3)))" :cursor [1 1]})))
+            (it :set
+                (fn []
+                  (h.setup {:content "(#{1} 2)" :cursor [1 1]})
+                  (h.feedkeys forward-keymap)
+                  (h.expect {:content "(#{1 2})" :cursor [1 1]})))))
 
 
 (describe "slurp backwards"
@@ -34,4 +39,9 @@
                 (fn []
                   (h.setup {:content "((1) (+ 2 3))" :cursor [1 5]})
                   (h.feedkeys backward-keymap)
-                  (h.expect {:content "(((1) + 2 3))" :cursor [1 5]})))))
+                  (h.expect {:content "(((1) + 2 3))" :cursor [1 5]})))
+            (it :set
+                (fn []
+                  (h.setup {:content "(1 #{2})" :cursor [1 3]})
+                  (h.feedkeys backward-keymap)
+                  (h.expect {:content "(#{1 2})" :cursor [1 3]})))))
