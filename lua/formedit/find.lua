@@ -30,6 +30,13 @@ local function find_root_form(node)
     end
   end
 end
+local function first(form)
+  return form:named_child(0)
+end
+local function last(form)
+  local count = form:named_child_count()
+  return form:child(count)
+end
 local function form()
   local node = ts.get_node_at_cursor()
   return find_current_form(node)
@@ -38,4 +45,4 @@ local function root()
   local node = ts.get_node_at_cursor()
   return find_root_form(node)
 end
-return {form = form, root = root, ["insert-offset"] = insert_offset, ["start-offset"] = start_offset}
+return {form = form, root = root, ["insert-offset"] = insert_offset, ["start-offset"] = start_offset, first = first, last = last}

@@ -1,6 +1,6 @@
 # Form edit
 
-Paredit in Fennel for Clojure
+Paredit in Fennel for Clojure using Treesitter
 
 ## Features
 
@@ -8,8 +8,10 @@ Paredit in Fennel for Clojure
   - Lists (s-exp, quoted list), vector, set are all under one text object
   - so instead of `di(` `di[` `di{` just `dif` (or any other text object command)
   - `f` for current form. `F` for root form
-- Slurp
+- Slurp (Forward + Backwards)
   - Bring in element/form into your form
+- Barf (Forward + Backwards)
+  - Remove an element/form from your form
 - Raise
   - Remove parent form and replace with current form
 - Wrap
@@ -20,7 +22,6 @@ Paredit in Fennel for Clojure
 ## Todo
 
 - [ ] - Inner select
-- [ ] - Barf
 
 ## Dev Getting started
 

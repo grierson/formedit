@@ -33,6 +33,13 @@
         (when (node:parent)
           (find-root-form (node:parent))))))
 
+(fn first [form]
+  (form:named_child 0))
+
+(fn last [form]
+  (let [count (form:named_child_count)]
+    (form:child count)))
+
 ;; Find node
 (fn form []
   (let [node (ts.get_node_at_cursor)]
@@ -42,4 +49,4 @@
   (let [node (ts.get_node_at_cursor)]
     (find-root-form node)))
 
-{: form : root : insert-offset : start-offset}
+{: form : root : insert-offset : start-offset : first : last}
