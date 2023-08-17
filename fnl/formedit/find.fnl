@@ -6,17 +6,7 @@
               :set_lit true
               :anon_fn_lit true})
 
-(local start-offset {:list_lit 0
-                     :vec_lit 0
-                     :map_lit 0
-                     :set_lit 1
-                     :anon_fn_lit 1})
-
-(local insert-offset {:list_lit 1
-                      :vec_lit 1
-                      :map_lit 1
-                      :set_lit 2
-                      :anon_fn_lit 2})
+(local offset {:list_lit 1 :vec_lit 1 :map_lit 1 :set_lit 2 :anon_fn_lit 2})
 
 ;; Tree search
 (fn find-current-form [node]
@@ -49,4 +39,4 @@
   (let [node (ts.get_node_at_cursor)]
     (find-root-form node)))
 
-{: form : root : insert-offset : start-offset : first : last}
+{: form : root : offset : first : last}

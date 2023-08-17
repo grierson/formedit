@@ -24,7 +24,7 @@ local function backward()
   local row = _let_3_[1]
   local col = _let_3_[2]
   local type = form:type()
-  local offset = (find["insert-offset"])[type]
+  local offset = find.offset[type]
   local col0 = (col + offset)
   local sibling = form:prev_sibling()
   local sibling_text = ts.get_node_text(sibling, 0)

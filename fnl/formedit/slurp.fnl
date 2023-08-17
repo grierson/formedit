@@ -17,7 +17,7 @@
   (let [form (find.form)
         [row col] [(form:start)]
         type (form:type)
-        offset (. find.insert-offset type)
+        offset (. find.offset type)
         col (+ col offset)
         sibling (form:prev_sibling)
         sibling-text (ts.get_node_text sibling 0)
