@@ -19,10 +19,6 @@ Paredit in Fennel for Clojure using Treesitter
 - Insertion
   - Move cursor to begining/end for form in insert mode
 
-## Todo
-
-- [ ] - Inner select
-
 ## Dev Getting started
 
 ```bash
