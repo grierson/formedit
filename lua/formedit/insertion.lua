@@ -8,7 +8,7 @@ local function head()
   local start_col = _let_1_[2]
   local start_col0 = (start_col + offset)
   vim.api.nvim_buf_set_text(0, start_row, start_col0, start_row, start_col0, {" "})
-  vim.api.nvim_win_set_cursor(0, {(start_row + 1), (start_col0 + 1)})
+  vim.api.nvim_win_set_cursor(0, {(start_row + 1), start_col0})
   return vim.api.nvim_feedkeys("i", "n", true)
 end
 local function tail()
@@ -18,6 +18,7 @@ local function tail()
   local end_col = _let_2_[2]
   local end_col0 = (end_col - 1)
   vim.api.nvim_buf_set_text(0, end_row, end_col0, end_row, end_col0, {" "})
+  vim.api.nvim_win_set_cursor(0, {(end_row + 1), end_row})
   return vim.api.nvim_feedkeys("i", "n", true)
 end
 return {head = head, tail = tail}

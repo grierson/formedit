@@ -15,13 +15,13 @@ local function _2_()
   local function _4_()
     h.setup({content = "(1)", cursor = {1, 0}})
     h.feedkeys(keymap)
-    return h.expect({content = "( (1))", cursor = {1, 1}})
+    return h.expect({content = "( (1))", cursor = {1, 0}})
   end
   it("form head", _4_)
   local function _5_()
     h.setup({content = "(1 (2))", cursor = {1, 3}})
     h.feedkeys(keymap)
-    return h.expect({content = "(1 ( (2)))", cursor = {1, 4}})
+    return h.expect({content = "(1 ( (2)))", cursor = {1, 3}})
   end
   return it("sub form", _5_)
 end

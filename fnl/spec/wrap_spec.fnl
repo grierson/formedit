@@ -13,9 +13,11 @@
                 (fn []
                   (h.setup {:content "(1)" :cursor [1 0]})
                   (h.feedkeys keymap)
-                  (h.expect {:content "( (1))" :cursor [1 1]})))
+                  (h.expect {:content "( (1))" :cursor [1 0]})))
             (it "sub form"
                 (fn []
                   (h.setup {:content "(1 (2))" :cursor [1 3]})
                   (h.feedkeys keymap)
-                  (h.expect {:content "(1 ( (2)))" :cursor [1 4]})))))
+                  (h.expect {:content "(1 ( (2)))" :cursor [1 3]})))))
+
+
