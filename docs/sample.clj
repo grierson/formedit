@@ -1,23 +1,3 @@
-; TODO: Broken
-; barf forward
-; cxt: cursor within 1st form
-; key: <)
-; expected: (+ 1 (+ 2) 3)
-(+ 1 (+ 2 3))
-
-; TODO: Broken
-; barf backwards
-; cxt: cursor within 1st form
-; key: >(
-; expected: (+ 1 + (2 3))
-(+ 1 (+ 2 3))
-
-; Wrap form
-; cxt: cursor within
-; key: <localleader>i
-; expected: (| (+ 2 3)) *insert mode*
-(+ 2 3)
-
 ; slurp forward
 ; cxt: cursor within 1st form
 ; key: >)
@@ -29,6 +9,24 @@
 ; key: <(
 ; expected: (+ (1 + 2 3))
 (+ 1 (+ 2 3))
+
+; barf forward
+; cxt: cursor within 1st form
+; key: <)
+; expected: (+ 1 (+ 2) 3)
+(+ 1 (+ 2 3))
+
+; barf backwards
+; cxt: cursor within 1st form
+; key: >(
+; expected: (+ 1 + (2 3))
+(+ 1 (+ 2 3))
+
+; Wrap form
+; cxt: cursor within
+; key: <localleader>i
+; expected: (| (+ 2 3)) *insert mode*
+(+ 2 3)
 
 ; raise form
 ; cxt: cursor within 1st form
@@ -55,10 +53,10 @@
 (+ 2 (+ 3 4))
 
 ; Text object root outer
-; cxt: cursor within second form
+; cxt: cursor within first form
 ; key: daF
 ; expected: _
-(+ 2 3)
+(+ 1 (+ 2 3))
 
 ; Insert head
 ; cxt: cursor within

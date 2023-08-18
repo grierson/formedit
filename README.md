@@ -6,8 +6,8 @@ Paredit in Fennel for Clojure using Treesitter
 
 - Form text objects
   - Lists (s-exp, quoted list), vector, set are all under one text object
-  - so instead of `di(` `di[` `di{` just `dif` (or any other text object command)
-  - `f` for current form. `F` for root form
+    so instead of `di(` `di[` `di{` just `dif` (or any other text object command)
+    `f` for current form. `F` for root form
 - Slurp (Forward + Backwards)
   - Bring in element/form into your form
 - Barf (Forward + Backwards)
@@ -17,14 +17,42 @@ Paredit in Fennel for Clojure using Treesitter
 - Wrap
   - Add form around current form
 - Insertion
-  - Move cursor to begining/end for form in insert mode
+  - Move cursor to begining/end of form in insert mode
 
-## Dev Getting started
+## Install
+
+For lazy package manager
+
+```lua
+"grierson/formedit"
+```
+
+## Example keymap
+
+Based of `tpope/vim-sexp-mappings-for-regular-people`
+
+```lua
+local formedit = require("formedit")
+vim.keymap.set('o', 'af', formedit.select.form, { desc = "Outer form" })
+vim.keymap.set('o', 'aF', formedit.select.root, { desc = "Outer root form" })
+vim.keymap.set('o', 'if', formedit.select.inner, { desc = "Inner form" })
+vim.keymap.set('o', 'iF', formedit.select["inner-root"], { desc = "Inner root form" })
+vim.keymap.set('n', '<localleader>h', formedit.insertion.head, { desc = "Head insert" })
+vim.keymap.set('n', '<localleader>H', formedit.insertion.tail, { desc = "Tail insert" })
+vim.keymap.set('n', '<localleader>i', formedit.wrap.head, { desc = "Wrap form " })
+vim.keymap.set('n', '<localleader>o', formedit.raise.form, { desc = "Raise form" })
+vim.keymap.set('n', '>)', formedit.slurp.forward, { desc = "Slurp forward" })
+vim.keymap.set('n', '<(', formedit.slurp.backward, { desc = "Slurp backward" })
+vim.keymap.set('n', '>(', formedit.barf.backward, { desc = "Barf backward" })
+vim.keymap.set('n', '<)', formedit.barf.forward, { desc = "Barf forward" })
+```
+
+## Developer Getting started
 
 ```bash
-./scripts/nfnl   # To download nfnl
-just test   # Run tests
-just watch {featuer}   # Run watch tests for feature
+./scripts/nfnl          # Download nfnl
+just test               # Run tests
+just watch {featuer}    # Run test in watch mode for feature
 ```
 
 ## Unlicensed
@@ -43,3 +71,5 @@ snippet.
 [nfnl]: https://github.com/Olical/nfnl
 [unlicense]: http://unlicense.org/
 [plenary]: https://github.com/nvim-lua/plenary.nvim
+[guns/vim-sexp]: https://github.com/guns/vim-sexp
+[tpope/vim-sexp-mappings-for-regular-people]: https://github.com/tpope/vim-sexp-mappings-for-regular-people
