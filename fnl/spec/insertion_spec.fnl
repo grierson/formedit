@@ -3,7 +3,7 @@
 (local insertion (require :formedit.insertion))
 
 (local head-keymap :<localleader>h)
-(local tail-keymap :<localleader>t)
+(local tail-keymap :<localleader>H)
 
 (describe "head insertion"
           (fn []
@@ -35,11 +35,9 @@
                 (fn []
                   (h.setup {:content "(1)" :cursor [1 0]})
                   (h.feedkeys tail-keymap)
-                  (h.expect {:content "(1 )" :cursor [1 3]})))
+                  (h.expect {:content "(1 )" :cursor [1 2]})))
             (it :sub
                 (fn []
                   (h.setup {:content "(1 (2))" :cursor [1 3]})
                   (h.feedkeys tail-keymap)
-                  (h.expect {:content "(1 (2 ))" :cursor [1 6]})))))
-
-(print "foo")
+                  (h.expect {:content "(1 (2 ))" :cursor [1 5]})))))

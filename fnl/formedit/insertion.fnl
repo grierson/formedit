@@ -14,7 +14,7 @@
         [end-row end-col] [(form:end_)]
         end-col (- end-col 1)]
     (vim.api.nvim_buf_set_text 0 end-row end-col end-row end-col [" "])
-    (vim.api.nvim_win_set_cursor 0 [(+ end-row 1) end-row])
+    (vim.api.nvim_win_set_cursor 0 [(+ end-row 1) (+ end-col 1)])
     (vim.api.nvim_feedkeys :i :n true)))
 
 {: head : tail}

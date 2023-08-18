@@ -18,7 +18,7 @@ local function tail()
   local end_col = _let_2_[2]
   local end_col0 = (end_col - 1)
   vim.api.nvim_buf_set_text(0, end_row, end_col0, end_row, end_col0, {" "})
-  vim.api.nvim_win_set_cursor(0, {(end_row + 1), end_row})
+  vim.api.nvim_win_set_cursor(0, {(end_row + 1), (end_col0 + 1)})
   return vim.api.nvim_feedkeys("i", "n", true)
 end
 return {head = head, tail = tail}
