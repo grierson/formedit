@@ -8,4 +8,11 @@
         [start-row start-col end-row end-col] [(parent:range)]]
     (vim.api.nvim_buf_set_text 0 start-row start-col end-row end-col [text])))
 
-{: form}
+(fn element []
+  (let [element (find.element)
+        parent (element:parent)
+        text (ts.get_node_text element 0)
+        [start-row start-col end-row end-col] [(parent:range)]]
+    (vim.api.nvim_buf_set_text 0 start-row start-col end-row end-col [text])))
+
+{: form : element}

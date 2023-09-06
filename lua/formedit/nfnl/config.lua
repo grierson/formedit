@@ -7,11 +7,12 @@ local str = autoload("formedit.nfnl.string")
 local fennel = autoload("formedit.nfnl.fennel")
 local notify = autoload("formedit.nfnl.notify")
 local config_file_name = ".nfnl.fnl"
-local function default()
-  return {["compiler-options"] = {}, ["fennel-path"] = str.join(";", {"./?.fnl", "./?/init.fnl", "./fnl/?.fnl", "./fnl/?/init.fnl"}), ["fennel-macro-path"] = str.join(";", {"./?.fnl", "./?/init-macros.fnl", "./?/init.fnl", "./fnl/?.fnl", "./fnl/?/init-macros.fnl", "./fnl/?/init.fnl"}), ["source-file-patterns"] = {"*.fnl", fs["join-path"]({"**", "*.fnl"})}, ["fnl-path->lua-path"] = fs["fnl-path->lua-path"]}
+local function default(opts)
+  local root_dir = core.get(opts, "root-dir", vim.fn.getcwd())
+  return {["compiler-options"] = {}, ["fennel-path"] = str.join(";", core.map(fs["join-path"], {{root_dir, "?.fnl"}, {root_dir, "?", "init.fnl"}, {root_dir, "fnl", "?.fnl"}, {root_dir, "fnl", "?", "init.fnl"}})), ["fennel-macro-path"] = str.join(";", core.map(fs["join-path"], {{root_dir, "?.fnl"}, {root_dir, "?", "init-macros.fnl"}, {root_dir, "?", "init.fnl"}, {root_dir, "fnl", "?.fnl"}, {root_dir, "fnl", "?", "init-macros.fnl"}, {root_dir, "fnl", "?", "init.fnl"}})), ["source-file-patterns"] = {"*.fnl", fs["join-path"]({"**", "*.fnl"})}, ["fnl-path->lua-path"] = fs["fnl-path->lua-path"]}
 end
-local function cfg_fn(t)
-  local default_cfg = default()
+local function cfg_fn(t, opts)
+  local default_cfg = default(opts)
   local function _2_(path)
     return core["get-in"](t, path, core["get-in"](default_cfg, path))
   end
@@ -36,7 +37,7 @@ local function find_and_load(dir)
         ok, config = pcall(fennel.eval, config_source, {filename = config_file_path})
       end
       if ok then
-        return {config = config, ["root-dir"] = root_dir, cfg = cfg_fn(config)}
+        return {config = config, ["root-dir"] = root_dir, cfg = cfg_fn(config, {["root-dir"] = root_dir})}
       else
         return notify.error(config)
       end

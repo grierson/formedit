@@ -12,4 +12,15 @@ local function form()
   local end_col = _let_1_[4]
   return vim.api.nvim_buf_set_text(0, start_row, start_col, end_row, end_col, {text})
 end
-return {form = form}
+local function element()
+  local element0 = find.element()
+  local parent = element0:parent()
+  local text = ts.get_node_text(element0, 0)
+  local _let_2_ = {parent:range()}
+  local start_row = _let_2_[1]
+  local start_col = _let_2_[2]
+  local end_row = _let_2_[3]
+  local end_col = _let_2_[4]
+  return vim.api.nvim_buf_set_text(0, start_row, start_col, end_row, end_col, {text})
+end
+return {form = form, element = element}

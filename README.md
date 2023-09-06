@@ -41,6 +41,7 @@ vim.keymap.set('n', '<localleader>h', formedit.insertion.head, { desc = "Head in
 vim.keymap.set('n', '<localleader>H', formedit.insertion.tail, { desc = "Tail insert" })
 vim.keymap.set('n', '<localleader>i', formedit.wrap.head, { desc = "Wrap form " })
 vim.keymap.set('n', '<localleader>o', formedit.raise.form, { desc = "Raise form" })
+vim.keymap.set('n', '<localleader>O', formedit.raise.element, { desc = "Raise element" })
 vim.keymap.set('n', '>)', formedit.slurp.forward, { desc = "Slurp forward" })
 vim.keymap.set('n', '<(', formedit.slurp.backward, { desc = "Slurp backward" })
 vim.keymap.set('n', '>(', formedit.barf.backward, { desc = "Barf backward" })

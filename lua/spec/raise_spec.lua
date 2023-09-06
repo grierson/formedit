@@ -5,18 +5,28 @@ local it = _local_1_["it"]
 local before_each = _local_1_["before_each"]
 local h = require("spec.helper")
 local raise = require("formedit.raise")
-local keymap = "<localleader>o"
+local localleader = ","
+local raise_form_keymap = "<localleader>o"
+local raise_element_keymap = "<localleader>O"
 local function _2_()
   local function _3_()
-    vim.g.maplocalleader = keymap
-    return vim.keymap.set("n", keymap, raise.form)
+    vim.g.maplocalleader = localleader
+    vim.keymap.set("n", raise_form_keymap, raise.form)
+    return vim.keymap.set("n", raise_element_keymap, raise.element)
   end
   before_each(_3_)
   local function _4_()
     h.setup({content = "(1 (2))", cursor = {1, 4}})
-    h.feedkeys(keymap)
+    h.feedkeys(raise_form_keymap)
     return h.expect({content = "(2)", cursor = {1, 2}})
   end
-  return it("form", _4_)
+  it("form", _4_)
+  local function _5_()
+    h.setup({content = "(+ 1 (+ 2 3))", cursor = {1, 8}})
+    h.feedkeys(raise_element_keymap)
+    return h.expect({content = "(+ 1 2)", cursor = {1, 6}})
+  end
+  return it("element", _5_)
 end
-return describe("raise", _2_)
+describe("raise", _2_)
+return print("End")
