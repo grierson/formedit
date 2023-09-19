@@ -16,17 +16,31 @@ local function _2_()
   end
   before_each(_3_)
   local function _4_()
-    h.setup({content = "(1 (2))", cursor = {1, 4}})
+    h.setup({content = "(+ 1 (+ 2 3))", cursor = {1, 5}})
     h.feedkeys(raise_form_keymap)
-    return h.expect({content = "(2)", cursor = {1, 2}})
+    return h.expect({content = "(+ 2 3)", cursor = {1, 0}})
   end
-  it("form", _4_)
-  local function _5_()
+  return it("form", _4_)
+end
+describe("raise-form", _2_)
+local function _5_()
+  local function _6_()
+    vim.g.maplocalleader = localleader
+    vim.keymap.set("n", raise_form_keymap, raise.form)
+    return vim.keymap.set("n", raise_element_keymap, raise.element)
+  end
+  before_each(_6_)
+  local function _7_()
     h.setup({content = "(+ 1 (+ 2 3))", cursor = {1, 8}})
     h.feedkeys(raise_element_keymap)
-    return h.expect({content = "(+ 1 2)", cursor = {1, 6}})
+    return h.expect({content = "(+ 1 2)", cursor = {1, 5}})
   end
-  return it("element", _5_)
+  it("first-element", _7_)
+  local function _8_()
+    h.setup({content = "(+ 1 (+ 2 3))", cursor = {1, 10}})
+    h.feedkeys(raise_element_keymap)
+    return h.expect({content = "(+ 1 3)", cursor = {1, 5}})
+  end
+  return it("second-element", _8_)
 end
-describe("raise", _2_)
-return print("End")
+return describe("raise-element", _5_)

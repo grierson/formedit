@@ -10,7 +10,8 @@ local function form()
   local start_col = _let_1_[2]
   local end_row = _let_1_[3]
   local end_col = _let_1_[4]
-  return vim.api.nvim_buf_set_text(0, start_row, start_col, end_row, end_col, {text})
+  vim.api.nvim_buf_set_text(0, start_row, start_col, end_row, end_col, {text})
+  return vim.api.nvim_win_set_cursor(0, {(start_row + 1), start_col})
 end
 local function element()
   local element0 = find.element()
@@ -21,6 +22,7 @@ local function element()
   local start_col = _let_2_[2]
   local end_row = _let_2_[3]
   local end_col = _let_2_[4]
-  return vim.api.nvim_buf_set_text(0, start_row, start_col, end_row, end_col, {text})
+  vim.api.nvim_buf_set_text(0, start_row, start_col, end_row, end_col, {text})
+  return vim.api.nvim_win_set_cursor(0, {(start_row + 1), start_col})
 end
 return {form = form, element = element}
